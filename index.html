@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blue Mark Water</title>
+<title>Blue Mark Water | Premium Mineral Water</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -15,218 +16,440 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
-background:#02142b;
-color:#fff;
+background:#03152e;
+color:white;
 overflow-x:hidden;
 }
 
+/* Animated Background */
+
+body::before{
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+background:
+linear-gradient(rgba(0,20,50,.75),rgba(0,20,50,.75)),
+url('https://images.unsplash.com/photo-1564419439262-4f8f3c5f53ef?auto=format&fit=crop&w=1600&q=80');
+background-size:cover;
+background-position:center;
+z-index:-2;
+}
+
+/* Floating bubbles */
+
+.bubble{
+position:fixed;
+bottom:-100px;
+border-radius:50%;
+background:rgba(255,255,255,.15);
+animation:float 18s infinite linear;
+z-index:-1;
+}
+
+.bubble:nth-child(1){
+left:10%;
+width:60px;
+height:60px;
+animation-duration:14s;
+}
+
+.bubble:nth-child(2){
+left:25%;
+width:90px;
+height:90px;
+animation-duration:18s;
+}
+
+.bubble:nth-child(3){
+left:50%;
+width:70px;
+height:70px;
+animation-duration:20s;
+}
+
+.bubble:nth-child(4){
+left:75%;
+width:110px;
+height:110px;
+animation-duration:22s;
+}
+
+.bubble:nth-child(5){
+left:90%;
+width:50px;
+height:50px;
+animation-duration:15s;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+}
+100%{
+transform:translateY(-120vh);
+}
+}
+
+/* Header */
+
 header{
 position:fixed;
-top:0;
 width:100%;
-background:rgba(0,0,0,.4);
-backdrop-filter:blur(10px);
+top:0;
+padding:18px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 8%;
-z-index:1000;
+background:rgba(0,0,0,.25);
+backdrop-filter:blur(12px);
+z-index:999;
 }
 
 .logo{
-font-size:30px;
+font-size:32px;
 font-weight:800;
-color:#00bfff;
+color:#00c3ff;
+text-shadow:0 0 15px #00c3ff;
 }
 
 nav a{
-color:#fff;
 text-decoration:none;
-margin:0 15px;
+color:white;
+margin-left:25px;
 font-weight:600;
+transition:.3s;
 }
+
+nav a:hover{
+color:#00c3ff;
+}
+
+/* Hero */
 
 .hero{
 min-height:100vh;
 display:flex;
 align-items:center;
-justify-content:space-between;
-padding:120px 8%;
-background:
-linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
-url('https://images.unsplash.com/photo-1548839140-29a749e1cf4d?q=80&w=1200');
-background-size:cover;
-background-position:center;
+justify-content:center;
+text-align:center;
+padding:120px 20px;
 }
 
-.hero-text{
-max-width:600px;
+.hero-content{
+max-width:900px;
 }
 
-.hero-text h1{
-font-size:70px;
+.hero h1{
+font-size:75px;
+font-weight:800;
+text-transform:uppercase;
 line-height:1.1;
+animation:glow 2s infinite alternate;
 }
 
-.hero-text span{
-color:#00bfff;
+.hero h1 span{
+color:#00c3ff;
 }
 
-.hero-text p{
-margin:20px 0;
-font-size:20px;
+@keyframes glow{
+from{
+text-shadow:0 0 10px #00c3ff;
+}
+to{
+text-shadow:
+0 0 20px #00c3ff,
+0 0 40px #00c3ff,
+0 0 60px #00c3ff;
+}
+}
+
+.hero p{
+margin-top:25px;
+font-size:22px;
 }
 
 .btn{
 display:inline-block;
-padding:15px 30px;
-background:#00bfff;
-color:#fff;
-text-decoration:none;
-border-radius:40px;
+margin-top:30px;
+padding:16px 35px;
+background:#00c3ff;
+color:white;
 font-weight:700;
+text-decoration:none;
+border-radius:50px;
+box-shadow:0 0 25px #00c3ff;
+transition:.4s;
 }
 
-.marquee{
-background:#00bfff;
-color:#000;
-padding:12px;
-font-weight:bold;
+.btn:hover{
+transform:translateY(-5px);
+}
+
+/* Continuous Moving Text */
+
+.ticker{
+width:100%;
 overflow:hidden;
+background:#00c3ff;
+padding:15px 0;
 white-space:nowrap;
 }
 
-.marquee span{
+.ticker div{
 display:inline-block;
 padding-left:100%;
-animation:move 15s linear infinite;
+font-weight:800;
+font-size:20px;
+color:#001b35;
+animation:scrollText 15s linear infinite;
 }
 
-@keyframes move{
-0%{transform:translateX(0);}
-100%{transform:translateX(-100%);}
+@keyframes scrollText{
+0%{
+transform:translateX(0);
+}
+100%{
+transform:translateX(-100%);
+}
+}
+
+/* Cards */
+
+.section{
+padding:90px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:42px;
+margin-bottom:50px;
+color:#00c3ff;
 }
 
 .cards{
-padding:80px 8%;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
 }
 
 .card{
-background:#072244;
-padding:25px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+padding:30px;
 border-radius:20px;
-box-shadow:0 0 20px rgba(0,191,255,.2);
+border:1px solid rgba(255,255,255,.15);
 transition:.4s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 0 30px rgba(0,191,255,.5);
+box-shadow:0 0 25px rgba(0,195,255,.7);
 }
+
+.card h3{
+margin-bottom:15px;
+color:#00c3ff;
+}
+
+/* Coming Soon */
+
+.coming{
+text-align:center;
+padding:90px 20px;
+}
+
+.coming h2{
+font-size:60px;
+color:#00c3ff;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+50%{
+transform:scale(1.08);
+}
+}
+
+/* Contact */
 
 .contact{
-padding:80px 8%;
 text-align:center;
+padding:80px 20px;
 }
 
-.contact h2{
-margin-bottom:20px;
+.contact-box{
+max-width:850px;
+margin:auto;
+background:rgba(255,255,255,.08);
+padding:40px;
+border-radius:20px;
+backdrop-filter:blur(12px);
 }
 
-.contact p{
-margin:10px 0;
+.contact-box p{
+margin:12px 0;
+font-size:18px;
 }
+
+/* Footer */
+
+footer{
+padding:25px;
+text-align:center;
+background:#000;
+margin-top:40px;
+}
+
+/* WhatsApp */
 
 .whatsapp{
 position:fixed;
 right:20px;
 bottom:20px;
 background:#25D366;
-padding:15px 20px;
-border-radius:50px;
 color:white;
 text-decoration:none;
-font-weight:bold;
+padding:15px 22px;
+border-radius:50px;
+font-weight:700;
+box-shadow:0 0 20px rgba(37,211,102,.8);
+z-index:999;
 }
 
-footer{
-padding:25px;
-text-align:center;
-background:#000;
+/* Mobile */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:45px;
 }
+
+nav{
+display:none;
+}
+
+.section-title{
+font-size:32px;
+}
+
+.coming h2{
+font-size:40px;
+}
+
+}
+
 </style>
 </head>
-
 <body>
+
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
 
 <header>
 <div class="logo">Blue Mark Water</div>
+
 <nav>
 <a href="#">Home</a>
-<a href="#">About</a>
 <a href="#">Services</a>
+<a href="#">About</a>
 <a href="#">Contact</a>
 </nav>
 </header>
 
 <section class="hero">
-<div class="hero-text">
 
-<h1>Blue Mark <span>Water</span></h1>
+<div class="hero-content">
+
+<h1>
+Blue Mark <span>Water</span>
+</h1>
 
 <p>
-Premium Customized Mineral Water Bottles For
-Hotels, Cafes & Restaurants
+Premium Mineral Water • Pure • Fresh • Trusted Quality
 </p>
 
 <p>
-Owner: Rishikesh Yadav
+Owner : Rishikesh
 </p>
 
 <a href="https://wa.me/919936748840" class="btn">
-WhatsApp Now
+Contact Now
 </a>
 
 </div>
+
 </section>
 
-<div class="marquee">
-<span>
-🚀 COMING SOON • PURE WATER • CUSTOM LOGO BOTTLES • HOTEL BRANDING • AZAMGARH • BLUE MARK WATER •
-</span>
+<div class="ticker">
+<div>
+💧 BLUE MARK WATER • PREMIUM MINERAL WATER • AZAMGARH • PURE & SAFE DRINKING WATER • OWNER RISHIKESH • WHATSAPP 9936748840 • COMING SOON • PREMIUM QUALITY • 💧
+</div>
 </div>
 
-<section class="cards">
+<section class="section">
 
-<div class="card">
-<h2>💧 Custom Branding</h2>
-<p>Customized water bottles with your business logo.</p>
-</div>
+<h2 class="section-title">Our Services</h2>
 
-<div class="card">
-<h2>🏨 Hotel Supply</h2>
-<p>Premium bottles for hotels, resorts and restaurants.</p>
-</div>
+<div class="cards">
 
 <div class="card">
-<h2>🚚 Bulk Orders</h2>
-<p>Large quantity orders available across Uttar Pradesh.</p>
+<h3>💧 Pure Water</h3>
+<p>Fresh and hygienic mineral water with premium quality standards.</p>
 </div>
+
+<div class="card">
+<h3>🏨 Hotel Supply</h3>
+<p>Special supply for hotels, restaurants, cafes and events.</p>
+</div>
+
+<div class="card">
+<h3>🚚 Bulk Orders</h3>
+<p>Fast delivery and large quantity supply available.</p>
+</div>
+
+<div class="card">
+<h3>⭐ Premium Quality</h3>
+<p>Modern purification and trusted water solutions.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="coming">
+
+<h2>🚀 COMING SOON 🚀</h2>
+
+<p style="margin-top:15px;font-size:20px;">
+A New Standard Of Pure Drinking Water
+</p>
 
 </section>
 
 <section class="contact">
 
-<h2>Contact Information</h2>
+<div class="contact-box">
 
-<p>📞 9936748840</p>
-<p>💬 WhatsApp: 9936748840</p>
-<p>📧 mr.rishikesh8181@gmail.com</p>
+<h2 class="section-title">Contact Information</h2>
+
+<p>👤 Owner : Rishikesh</p>
+<p>📞 Contact : 9936748840</p>
+<p>💬 WhatsApp : 9936748840</p>
+<p>📧 Email : mr.rishikesh8181@gmail.com</p>
 <p>📍 Near Sidhari, Azamgarh, Uttar Pradesh</p>
+
+</div>
 
 </section>
 
@@ -234,7 +457,8 @@ WhatsApp Now
 © 2026 Blue Mark Water | All Rights Reserved
 </footer>
 
-<a class="whatsapp" href="https://wa.me/919936748840">
+<a class="whatsapp"
+href="https://wa.me/919936748840">
 WhatsApp
 </a>
 
